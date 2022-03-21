@@ -611,6 +611,126 @@ import statsmodels.formula.api as sm
 
 results = sm.ols('Q("DAILY AQI VALUE PM10") ~ AWND + PRCP + TMAX', data = dallas, missing = 'drop').fit()
 results.summary()
+
+# +
+import statsmodels.formula.api as sm
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~ AWND + TAVG + PRCP', data = los_angeles, missing = 'drop').fit()
+results.summary()
+
+# +
+import statsmodels.formula.api as sm
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~ AWND + SNWD + PRCP', data = new_york, missing = 'drop').fit()
+results.summary()
+
+# +
+import statsmodels.formula.api as sm
+austin_select = austin.loc[(austin['PRCP'] > 0) & (austin['AWND'] > 0) & (austin['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
+
+
+results = sm.ols('Q("Daily Mean PM10 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=austin_select).fit()
+
+results.summary()
+
+
+
+# +
+import statsmodels.formula.api as sm
+dallas_select = dallas.loc[(dallas['PRCP'] > 0) & (dallas['AWND'] > 0) & (dallas['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
+
+
+results = sm.ols('Q("Daily Mean PM10 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=dallas_select).fit()
+
+results.summary()
+
+
+# +
+import statsmodels.formula.api as sm
+houston_select = houston.loc[(houston['PRCP'] > 0) & (houston['AWND'] > 0) & (houston['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
+
+
+results = sm.ols('Q("Daily Mean PM10 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=houston_select).fit()
+
+results.summary()
+
+
+
+# +
+import statsmodels.formula.api as sm
+los_angeles_select = los_angeles.loc[(los_angeles['PRCP'] > 0) & (los_angeles['AWND'] > 0) & (los_angeles['TAVG'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TAVG = lambda x:np.log(x['TAVG']))
+
+
+results = sm.ols('Q("Daily Mean PM10 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TAVG', data=los_angeles_select).fit()
+
+results.summary()
+
+
+# +
+import statsmodels.formula.api as sm
+new_york_select = new_york.loc[(new_york['PRCP'] > 0) & (new_york['AWND'] > 0) & (new_york['SNWD'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_SNWD = lambda x:np.log(x['SNWD']))
+
+
+results = sm.ols('Q("Daily Mean PM10 Concentration") ~log_base_PRCP + log_base_AWND + log_base_SNWD', data=new_york_select).fit()
+
+results.summary()
+
+
+# +
+import statsmodels.formula.api as sm
+austin_select = austin.loc[(austin['PRCP'] > 0) & (austin['AWND'] > 0) & (austin['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
+
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=austin_select).fit()
+
+results.summary()
+
+
+
+# +
+import statsmodels.formula.api as sm
+dallas_select = dallas.loc[(dallas['PRCP'] > 0) & (dallas['AWND'] > 0) & (dallas['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
+
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=dallas_select).fit()
+
+results.summary()
+
+
+
+# +
+import statsmodels.formula.api as sm
+houston_select = houston.loc[(houston['PRCP'] > 0) & (houston['AWND'] > 0) & (houston['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
+
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=houston_select).fit()
+
+results.summary()
+
+
+# +
+import statsmodels.formula.api as sm
+los_angeles_select = los_angeles.loc[(los_angeles['PRCP'] > 0) & (los_angeles['AWND'] > 0) & (los_angeles['TAVG'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TAVG = lambda x:np.log(x['TAVG']))
+
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~log_base_PRCP + log_base_AWND + log_base_TAVG', data=los_angeles_select).fit()
+
+results.summary()
+
+
+# +
+import statsmodels.formula.api as sm
+new_york_select = new_york.loc[(new_york['PRCP'] > 0) & (new_york['AWND'] > 0) & (new_york['SNWD'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_SNWD = lambda x:np.log(x['SNWD']))
+
+
+results = sm.ols('Q("DAILY AQI VALUE PM10") ~log_base_PRCP + log_base_AWND + log_base_SNWD', data=new_york_select).fit()
+
+results.summary()
+
 # -
+
+
+
+
 
 
