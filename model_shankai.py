@@ -612,6 +612,15 @@ import statsmodels.formula.api as sm
 
 results = sm.ols('Q("DAILY AQI VALUE NO2") ~ PRCP + AWND + TAVG', data = los_angeles, missing = 'drop').fit()
 results.summary()
+
+# +
+import statsmodels.formula.api as sm
+new_york_select = new_york.loc[(new_york['PRCP'] > 0) & (new_york['AWND'] > 0) & (new_york['SNWD'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_SNWD = lambda x:np.log(x['SNWD']))
+
+
+results = sm.ols('Q("DAILY AQI VALUE NO2") ~log_base_PRCP + log_base_AWND + log_base_SNWD', data=new_york_select).fit()
+
+results.summary()
 # -
 
 
