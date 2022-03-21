@@ -567,39 +567,6 @@ print(austin.info())
 import statsmodels.formula.api as sm
 
 # +
-
-dallas_select = dallas.loc[(dallas['PRCP'] > 0) & (dallas['AWND'] > 0) & (dallas['TMAX'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
-
-
-results = sm.ols('Q("Daily Mean PM2.5 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=dallas_select).fit()
-
-results.summary()
-
-# +
-dallas_select = dallas.loc[(dallas['PRCP'] > 0) & (dallas['AWND'] > 0) & (dallas['TMAX'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
-
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=dallas_select).fit()
-
-results.summary()
-
-# +
-los_angeles_select = los_angeles.loc[(los_angeles['PRCP'] > 0) & (los_angeles['AWND'] > 0) & (los_angeles['TAVG'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TAVG = lambda x:np.log(x['TAVG']))
-
-
-results = sm.ols('Q("Daily Mean PM2.5 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TAVG', data=los_angeles_select).fit()
-
-results.summary()
-
-# +
-los_angeles_select = los_angeles.loc[(los_angeles['PRCP'] > 0) & (los_angeles['AWND'] > 0) & (los_angeles['TAVG'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TAVG = lambda x:np.log(x['TAVG']))
-
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~log_base_PRCP + log_base_AWND + log_base_TAVG', data=los_angeles_select).fit()
-
-results.summary()
-
-# +
 new_york_select = new_york.loc[(new_york['PRCP'] > 0) & (new_york['AWND'] > 0) & (new_york['SNWD'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_SNWD = lambda x:np.log(x['SNWD']))
 
 
