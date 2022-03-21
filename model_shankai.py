@@ -594,6 +594,24 @@ import statsmodels.formula.api as sm
 
 results = sm.ols('Q("DAILY AQI VALUE NO2") ~ PRCP + AWND + TMAX', data = austin, missing = 'drop').fit()
 results.summary()
+
+# +
+import statsmodels.formula.api as sm
+
+results = sm.ols('Q("DAILY AQI VALUE NO2") ~ PRCP + AWND + TMAX', data = dallas, missing = 'drop').fit()
+results.summary()
+
+# +
+import statsmodels.formula.api as sm
+
+results = sm.ols('Q("DAILY AQI VALUE NO2") ~ PRCP + AWND + TMAX', data = houston, missing = 'drop').fit()
+results.summary()
+
+# +
+import statsmodels.formula.api as sm
+
+results = sm.ols('Q("DAILY AQI VALUE NO2") ~ PRCP + AWND + TAVG', data = los_angeles, missing = 'drop').fit()
+results.summary()
 # -
 
 
