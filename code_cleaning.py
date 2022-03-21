@@ -657,6 +657,23 @@ houston_air_pollution = citymergeairpollution(houston_pm25, houstonpm10, houston
 los_angeles_air_pollution = citymergeairpollution(los_angelespm25, los_angelespm10, los_angelesno2)
 new_york_air_pollution = citymergeairpollution(new_yorkpm25, new_yorkpm10, new_yorkno2)
 
+def citymergeweatherpollution(city_weather_data, city_air_pollution_data):
+    city_merge = pd.merge(city_weather_data, city_air_pollution_data, how = 'outer', left_index = True, right_index= True )
+    return city_merge
+
+austin = citymergeweatherpollution(austin_weather, austin_air_pollution)
+dallas = citymergeweatherpollution(dallas_weather, dallas_air_pollution)
+houston = citymergeweatherpollution(houston_weather, houston_air_pollution)
+los_angeles = citymergeweatherpollution(los_angeles_weather, los_angeles_air_pollution)
+new_york = citymergeweatherpollution(new_york_weather, new_york_air_pollution)
+
+austin['CITY'] = 'AUSTIN'
+dallas['CITY'] = 'DALLAS'
+houston['CITY'] = 'HOUSTON'
+los_angeles['CITY'] = 'LOS_ANGELES'
+new_york['CITY'] = 'NEW_YORK'
+city_frame = [austin, dallas, houston, los_angeles, new_york]
+data_five_cities = pd.concat(city_frame, axis = 0, join='inner')
 # -
 
 
