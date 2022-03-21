@@ -394,7 +394,7 @@ austin_weather = clean_weather_data_city(AUSTIN_WEATHER_URL)
 dallas_weather = clean_weather_data_city(DALLAS_WEATHER_URL)
 houston_weather = clean_weather_data_city(HOUSTON_WEATHER_URL)
 los_angeles_weather = clean_weather_data_city(LOS_ANGELES_WEATHER_URL)
-new_york_weather = clean_weather_data_city(IN_PATH_NEW_YORK_WEATHER)
+new_york_weather = clean_weather_data_city(NEW_YORK_WEATHER_URL)
 
 def clean_city_pm25(city_pm25_data):    
     city_pm25_data['Date']=pd.to_datetime(city_pm25_data['Date'])
