@@ -561,6 +561,92 @@ new_york_2011pm10 = citypm10(new_york_pm10_2011)
 new_york_2010pm10 = citypm10(new_york_pm10_2010)
 frames_new_york_pm10=[new_york_2010pm10,new_york_2011pm10,new_york_2012pm10,new_york_2013pm10,new_york_2014pm10,new_york_2015pm10,new_york_2016pm10,new_york_2017pm10,new_york_2018pm10,new_york_2019pm10,new_york_2020pm10]
 new_yorkpm10=pd.concat(frames_new_york_pm10,join='outer')
+
+def cityno2(city_no2_data):
+    city_no2_data['Date']=pd.to_datetime(city_no2_data['Date'])
+    
+    no2stationdatemean=city_no2_data.groupby(['Date','Site ID'])['Daily Max 1-hour NO2 Concentration'].mean()
+    no2datemean=no2stationdatemean.groupby('Date').mean().to_frame()
+    
+    no2aqistationdatemean=city_no2_data.groupby(['Date','Site ID'])['DAILY_AQI_VALUE'].mean()
+    no2aqidatemean=no2aqistationdatemean.groupby('Date').mean().to_frame()
+    
+    cityno2data=pd.merge(no2datemean,no2aqidatemean,how='outer', left_index=True, right_index=True)
+    cityno2data.columns = ['Daily Mean NO2 Concentration', 'DAILY AQI VALUE NO2']
+    return cityno2data
+
+austin2020no2 = cityno2(austin_no2_2020)
+austin2019no2 = cityno2(austin_no2_2019)
+austin2018no2 = cityno2(austin_no2_2018)
+austin2017no2 = cityno2(austin_no2_2017)
+austin2016no2 = cityno2(austin_no2_2016)
+austin2015no2 = cityno2(austin_no2_2015)
+austin2014no2 = cityno2(austin_no2_2014)
+austin2013no2 = cityno2(austin_no2_2013)
+austin2012no2 = cityno2(austin_no2_2012)
+austin2011no2 = cityno2(austin_no2_2011)
+austin2010no2 = cityno2(austin_no2_2010)
+frames_austin_no2=[austin2010no2,austin2011no2,austin2012no2,austin2013no2,austin2014no2,austin2015no2,austin2016no2,austin2017no2,austin2018no2,austin2019no2,austin2020no2]
+austinno2=pd.concat(frames_austin_no2,join='outer')
+
+dallas2020no2 = cityno2(dallas_no2_2020)
+dallas2019no2 = cityno2(dallas_no2_2019)
+dallas2018no2 = cityno2(dallas_no2_2018)
+dallas2017no2 = cityno2(dallas_no2_2017)
+dallas2016no2 = cityno2(dallas_no2_2016)
+dallas2015no2 = cityno2(dallas_no2_2015)
+dallas2014no2 = cityno2(dallas_no2_2014)
+dallas2013no2 = cityno2(dallas_no2_2013)
+dallas2012no2 = cityno2(dallas_no2_2012)
+dallas2011no2 = cityno2(dallas_no2_2011)
+dallas2010no2 = cityno2(dallas_no2_2010)
+frames_dallasno2=[dallas2010no2,dallas2011no2,dallas2012no2,dallas2013no2,dallas2014no2,dallas2015no2,dallas2016no2,dallas2017no2,dallas2018no2,dallas2019no2,dallas2020no2]
+dallasno2=pd.concat(frames_dallasno2,join='outer')
+
+houston2020no2 = cityno2(houston_no2_2020)
+houston2019no2 = cityno2(houston_no2_2019)
+houston2018no2 = cityno2(houston_no2_2018)
+houston2017no2 = cityno2(houston_no2_2017)
+houston2016no2 = cityno2(houston_no2_2016)
+houston2015no2 = cityno2(houston_no2_2015)
+houston2014no2 = cityno2(houston_no2_2014)
+houston2013no2 = cityno2(houston_no2_2013)
+houston2012no2 = cityno2(houston_no2_2012)
+houston2011no2 = cityno2(houston_no2_2011)
+houston2010no2 = cityno2(houston_no2_2010)
+frames_houstonno2=[houston2010no2,houston2011no2,houston2012no2,houston2013no2,houston2014no2,houston2015no2,houston2016no2,houston2017no2,houston2018no2,houston2019no2,houston2020no2]
+houstonno2=pd.concat(frames_houstonno2,join='outer')
+
+los_angeles_2020no2 = cityno2(los_angeles_no2_2020)
+los_angeles_2019no2 = cityno2(los_angeles_no2_2019)
+los_angeles_2018no2 = cityno2(los_angeles_no2_2018)
+los_angeles_2017no2 = cityno2(los_angeles_no2_2017)
+los_angeles_2016no2 = cityno2(los_angeles_no2_2016)
+los_angeles_2015no2 = cityno2(los_angeles_no2_2015)
+los_angeles_2014no2 = cityno2(los_angeles_no2_2014)
+los_angeles_2013no2 = cityno2(los_angeles_no2_2013)
+los_angeles_2012no2 = cityno2(los_angeles_no2_2012)
+los_angeles_2011no2 = cityno2(los_angeles_no2_2011)
+los_angeles_2010no2 = cityno2(los_angeles_no2_2010)
+frames_los_angeles_no2=[los_angeles_2010no2,los_angeles_2011no2,los_angeles_2012no2,los_angeles_2013no2,los_angeles_2014no2,los_angeles_2015no2,los_angeles_2016no2,los_angeles_2017no2,los_angeles_2018no2,los_angeles_2019no2,los_angeles_2020no2]
+los_angelesno2=pd.concat(frames_los_angeles_no2,join='outer')
+
+new_york_2020no2 = cityno2(new_york_no2_2020)
+new_york_2019no2 = cityno2(new_york_no2_2019)
+new_york_2018no2 = cityno2(new_york_no2_2018)
+new_york_2017no2 = cityno2(new_york_no2_2017)
+new_york_2016no2 = cityno2(new_york_no2_2016)
+new_york_2015no2 = cityno2(new_york_no2_2015)
+new_york_2014no2 = cityno2(new_york_no2_2014)
+new_york_2013no2 = cityno2(new_york_no2_2013)
+new_york_2012no2 = cityno2(new_york_no2_2012)
+new_york_2011no2 = cityno2(new_york_no2_2011)
+new_york_2010no2 = cityno2(new_york_no2_2010)
+frames_new_york_no2=[new_york_2010no2,new_york_2011no2,new_york_2012no2,new_york_2013no2,new_york_2014no2,new_york_2015no2,new_york_2016no2,new_york_2017no2,new_york_2018no2,new_york_2019no2,new_york_2020no2]
+new_yorkno2=pd.concat(frames_new_york_no2,join='outer')
+
+
+
 # -
 
 
