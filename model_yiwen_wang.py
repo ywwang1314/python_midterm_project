@@ -567,36 +567,6 @@ print(austin.info())
 import statsmodels.formula.api as sm
 
 # +
-austin_select = austin.loc[(austin['PRCP'] > 0) & (austin['AWND'] > 0) & (austin['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
-
-
-results = sm.ols('Q("Daily Mean PM2.5 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=austin_select).fit()
-results.summary()
-
-# +
-austin_select = austin.loc[(austin['PRCP'] > 0) & (austin['AWND'] > 0) & (austin['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
-
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=austin_select).fit()
-results.summary()
-
-# +
-houston_select = houston.loc[(houston['PRCP'] > 0) & (houston['AWND'] > 0) & (houston['TMAX'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
-
-
-results = sm.ols('Q("Daily Mean PM2.5 Concentration") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=houston_select).fit()
-
-results.summary()
-
-# +
-houston_select = houston.loc[(houston['PRCP'] > 0) & (houston['AWND'] > 0) & (houston['TMAX'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
-
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=houston_select).fit()
-
-results.summary()
-
-# +
 
 dallas_select = dallas.loc[(dallas['PRCP'] > 0) & (dallas['AWND'] > 0) & (dallas['TMAX'] > 0) , :].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
 
