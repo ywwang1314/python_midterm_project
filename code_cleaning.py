@@ -645,7 +645,17 @@ new_york_2010no2 = cityno2(new_york_no2_2010)
 frames_new_york_no2=[new_york_2010no2,new_york_2011no2,new_york_2012no2,new_york_2013no2,new_york_2014no2,new_york_2015no2,new_york_2016no2,new_york_2017no2,new_york_2018no2,new_york_2019no2,new_york_2020no2]
 new_yorkno2=pd.concat(frames_new_york_no2,join='outer')
 
+def citymergeairpollution(pm25data, pm10data, no2data):
+    cityairpollution = pd.merge(pm25data, pm10data, how='outer', left_index=True, right_index=True)
+    cityairpollution = pd.merge(cityairpollution, no2data, how='outer', left_index=True, right_index=True)
+    
+    return cityairpollution
 
+austin_air_pollution = citymergeairpollution(austin_pm25, austinpm10, austinno2)
+dallas_air_pollution = citymergeairpollution(dallas_pm25, dallaspm10, dallasno2)
+houston_air_pollution = citymergeairpollution(houston_pm25, houstonpm10, houstonno2)
+los_angeles_air_pollution = citymergeairpollution(los_angelespm25, los_angelespm10, los_angelesno2)
+new_york_air_pollution = citymergeairpollution(new_yorkpm25, new_yorkpm10, new_yorkno2)
 
 # -
 
