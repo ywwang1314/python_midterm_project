@@ -190,6 +190,44 @@ IN_PATH_NEW_YORK_NO2_2013 = os.path.join('air_pollution','new_york','no2','ny_20
 IN_PATH_NEW_YORK_NO2_2012 = os.path.join('air_pollution','new_york','no2','ny_2012_no2.csv')
 IN_PATH_NEW_YORK_NO2_2011 = os.path.join('air_pollution','new_york','no2','ny_2011_no2.csv')
 IN_PATH_NEW_YORK_NO2_2010 = os.path.join('air_pollution','new_york','no2','ny_2010_no2.csv')
+
+austin_pm25_2020 = pd.read_csv(IN_PATH_AUSTIN_PM25_2020)
+austin_pm25_2019 = pd.read_csv(IN_PATH_AUSTIN_PM25_2019)
+austin_pm25_2018 = pd.read_csv(IN_PATH_AUSTIN_PM25_2018)
+austin_pm25_2017 = pd.read_csv(IN_PATH_AUSTIN_PM25_2017)
+austin_pm25_2016 = pd.read_csv(IN_PATH_AUSTIN_PM25_2016)
+austin_pm25_2015 = pd.read_csv(IN_PATH_AUSTIN_PM25_2015)
+austin_pm25_2014 = pd.read_csv(IN_PATH_AUSTIN_PM25_2014)
+austin_pm25_2013 = pd.read_csv(IN_PATH_AUSTIN_PM25_2013)
+austin_pm25_2012 = pd.read_csv(IN_PATH_AUSTIN_PM25_2012)
+austin_pm25_2011 = pd.read_csv(IN_PATH_AUSTIN_PM25_2011)
+austin_pm25_2010 = pd.read_csv(IN_PATH_AUSTIN_PM25_2010)
+
+
+austin_pm10_2020 = pd.read_csv(IN_PATH_AUSTIN_PM10_2020)
+austin_pm10_2019 = pd.read_csv(IN_PATH_AUSTIN_PM10_2019)
+austin_pm10_2018 = pd.read_csv(IN_PATH_AUSTIN_PM10_2018)
+austin_pm10_2017 = pd.read_csv(IN_PATH_AUSTIN_PM10_2017)
+austin_pm10_2016 = pd.read_csv(IN_PATH_AUSTIN_PM10_2016)
+austin_pm10_2015 = pd.read_csv(IN_PATH_AUSTIN_PM10_2015)
+austin_pm10_2014 = pd.read_csv(IN_PATH_AUSTIN_PM10_2014)
+austin_pm10_2013 = pd.read_csv(IN_PATH_AUSTIN_PM10_2013)
+austin_pm10_2012 = pd.read_csv(IN_PATH_AUSTIN_PM10_2012)
+austin_pm10_2011 = pd.read_csv(IN_PATH_AUSTIN_PM10_2011)
+austin_pm10_2010 = pd.read_csv(IN_PATH_AUSTIN_PM10_2010)
+
+
+austin_no2_2020 = pd.read_csv(IN_PATH_AUSTIN_NO2_2020)
+austin_no2_2019 = pd.read_csv(IN_PATH_AUSTIN_NO2_2019)
+austin_no2_2018 = pd.read_csv(IN_PATH_AUSTIN_NO2_2018)
+austin_no2_2017 = pd.read_csv(IN_PATH_AUSTIN_NO2_2017)
+austin_no2_2016 = pd.read_csv(IN_PATH_AUSTIN_NO2_2016)
+austin_no2_2015 = pd.read_csv(IN_PATH_AUSTIN_NO2_2015)
+austin_no2_2014 = pd.read_csv(IN_PATH_AUSTIN_NO2_2014)
+austin_no2_2013 = pd.read_csv(IN_PATH_AUSTIN_NO2_2013)
+austin_no2_2012 = pd.read_csv(IN_PATH_AUSTIN_NO2_2012)
+austin_no2_2011 = pd.read_csv(IN_PATH_AUSTIN_NO2_2011)
+austin_no2_2010 = pd.read_csv(IN_PATH_AUSTIN_NO2_2010)
 # -
 
 
