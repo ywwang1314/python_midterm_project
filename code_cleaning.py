@@ -381,6 +381,20 @@ new_york_no2_2013 = pd.read_csv(IN_PATH_NEW_YORK_NO2_2013)
 new_york_no2_2012 = pd.read_csv(IN_PATH_NEW_YORK_NO2_2012)
 new_york_no2_2011 = pd.read_csv(IN_PATH_NEW_YORK_NO2_2011)
 new_york_no2_2010 = pd.read_csv(IN_PATH_NEW_YORK_NO2_2010)
+
+def clean_weather_data_city(IN_PATH):
+    city_weather_data = (pd.read_csv(IN_PATH))
+    city_weather_data.set_index(pd.DatetimeIndex(city_weather_data['DATE']),inplace=True)   
+    city_weather_data.drop(['DATE','STATION','NAME'],axis=1,inplace=True)
+    #city_weather_data.columns[14:]=city_weather_data.columns[14:].fillna(0，inplace = True)
+    city_weather_data.iloc[:,13:] = city_weather_data.iloc[:,13:].fillna(value = 0)
+    return city_weather_data
+
+austin_weather = clean_weather_data_city(AUSTIN_WEATHER_URL)
+dallas_weather = clean_weather_data_city(DALLAS_WEATHER_URL)
+houston_weather = clean_weather_data_city(HOUSTON_WEATHER_URL)
+los_angeles_weather = clean_weather_data_city(LOS_ANGELES_WEATHER_URL)
+new_york_weather = clean_weather_data_city(IN_PATH_NEW_YORK_WEATHER)
 # -
 
 
