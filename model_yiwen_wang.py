@@ -1,5 +1,5 @@
 # + endofcell="--"
-# # +
+
 from ast import Lambda
 from operator import index
 import os
@@ -564,39 +564,7 @@ data_five_cities = pd.concat(city_frame, axis = 0, join='inner')
 
 print(austin.info())
 
-# +
 import statsmodels.formula.api as sm
-
-results = sm.ols('Q("Daily Mean PM10 Concentration") ~ AWND + PRCP + TMAX', data = austin, missing = 'drop').fit()
-results.summary()
-# -
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~ AWND + PRCP + TMAX', data = austin, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("Daily Mean PM10 Concentration") ~ AWND + PRCP + TMAX', data = houston, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~ AWND + PRCP + TMAX', data = houston, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("Daily Mean PM10 Concentration") ~ AWND + PRCP + TMAX', data = dallas, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~ AWND + PRCP + TMAX', data = dallas, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("Daily Mean PM10 Concentration") ~ AWND + PRCP + TAVG', data = los_angeles, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~ AWND + PRCP + TAVG', data = los_angeles, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("Daily Mean PM10 Concentration") ~ AWND + PRCP + SNWD', data = new_york, missing = 'drop').fit()
-results.summary()
-
-results = sm.ols('Q("DAILY AQI VALUE PM25") ~ AWND + PRCP + SNWD', data = new_york, missing = 'drop').fit()
-results.summary()
 
 # +
 austin_select = austin.loc[(austin['PRCP'] > 0) & (austin['AWND'] > 0) & (austin['TMAX'] > 0),:].assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_TMAX = lambda x:np.log(x['TMAX']))
@@ -610,7 +578,6 @@ austin_select = austin.loc[(austin['PRCP'] > 0) & (austin['AWND'] > 0) & (austin
 
 
 results = sm.ols('Q("DAILY AQI VALUE PM25") ~log_base_PRCP + log_base_AWND + log_base_TMAX', data=austin_select).fit()
-#print(austin_weather['WT01'])
 results.summary()
 
 # +
@@ -677,6 +644,22 @@ new_york_select = new_york.loc[(new_york['PRCP'] > 0) & (new_york['AWND'] > 0) &
 results = sm.ols('Q("DAILY AQI VALUE PM25") ~log_base_PRCP + log_base_AWND + log_base_SNWD', data=new_york_select).fit()
 
 results.summary()
+
+# +
+data_five_cities_select = data_five_cities.loc[(data_five_cities['PRCP'] > 0) & (data_five_cities['AWND'] > 0) & (data_five_cities['SNWD'] > 0),:].assign(lag_WT01 = lambda x:x['WT01'].shift()).assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_SNWD = lambda x:np.log(x['SNWD'])).assign(log_base_TAVG =lambda x:np.log(x['TAVG'])).assign(lag_PM25  = lambda x:x['Daily Mean PM2.5 Concentration'].shift())
+
+results = sm.ols('Q("Daily Mean PM2.5 Concentration") ~lag_WT01 + log_base_PRCP + log_base_AWND + log_base_SNWD + lag_PM25', data=data_five_cities_select).fit()
+results.summary()
+
+# +
+data_five_cities_select = data_five_cities.loc[(data_five_cities['PRCP'] > 0) & (data_five_cities['AWND'] > 0) & (data_five_cities['SNWD'] > 0),:].assign(lag_WT01 = lambda x:x['WT01'].shift()).assign(log_base_PRCP = lambda x:np.log(x['PRCP'])).assign(log_base_AWND = lambda x:np.log(x['AWND'])).assign(log_base_SNWD = lambda x:np.log(x['SNWD'])).assign(log_base_TAVG =lambda x:np.log(x['TAVG'])).assign(lag_PM25  = lambda x:x['Daily Mean PM2.5 Concentration'].shift())
+
+results = sm.ols('Q("DAILY AQI VALUE PM25") ~lag_WT01 + log_base_PRCP + log_base_AWND + log_base_SNWD + lag_PM25', data=data_five_cities_select).fit()
+results.summary()
 # -
+
+
+
+
 
 
