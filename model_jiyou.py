@@ -587,8 +587,12 @@ results.summary()
 import statsmodels.formula.api as sm
 
 print(los_angeles)
+
+# +
+import statsmodels.formula.api as sm
+
+results = sm.ols('Q("Daily Mean PM10 Concentration") ~ AWND + SNWD + PRCP', data = new_york, missing = 'drop').fit()
+results.summary()
 # -
-
-
 
 
