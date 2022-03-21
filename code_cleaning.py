@@ -395,6 +395,90 @@ dallas_weather = clean_weather_data_city(DALLAS_WEATHER_URL)
 houston_weather = clean_weather_data_city(HOUSTON_WEATHER_URL)
 los_angeles_weather = clean_weather_data_city(LOS_ANGELES_WEATHER_URL)
 new_york_weather = clean_weather_data_city(IN_PATH_NEW_YORK_WEATHER)
+
+def clean_city_pm25(city_pm25_data):
+    city_pm25_data['Date']=pd.to_datetime(city_pm25_data['Date'])
+    
+    pm25_station_date_mean=city_pm25_data.groupby(['Date','Site ID'])['Daily Mean PM2.5 Concentration'].mean()
+    pm25_date_mean=pm25_station_date_mean.groupby('Date').mean().to_frame()
+    pm25_aqi_station_date_mean=city_pm25_data.groupby(['Date','Site ID'])['DAILY_AQI_VALUE'].mean()
+    pm25_aqi_date_mean=pm25_aqi_station_date_mean.groupby('Date').mean().to_frame()
+    
+    city_pm25_data=pd.merge(pm25_date_mean,pm25_aqi_date_mean,how='outer', left_index=True, right_index=True)
+    city_pm25_data.columns = ['Daily Mean PM2.5 Concentration', 'DAILY AQI VALUE PM25']
+    return city_pm25_data
+
+austin_2020_pm25 = clean_city_pm25(austin_pm25_2020)
+austin_2019_pm25 = clean_city_pm25(austin_pm25_2019)
+austin_2018_pm25 = clean_city_pm25(austin_pm25_2018)
+austin_2017_pm25 = clean_city_pm25(austin_pm25_2017)
+austin_2016_pm25 = clean_city_pm25(austin_pm25_2016)
+austin_2015_pm25 = clean_city_pm25(austin_pm25_2015)
+austin_2014_pm25 = clean_city_pm25(austin_pm25_2014)
+austin_2013_pm25 = clean_city_pm25(austin_pm25_2013)
+austin_2012_pm25 = clean_city_pm25(austin_pm25_2012)
+austin_2011_pm25 = clean_city_pm25(austin_pm25_2011)
+austin_2010_pm25 = clean_city_pm25(austin_pm25_2010)
+frames_austin_pm25=[austin_2010_pm25,austin_2011_pm25,austin_2012_pm25,austin_2013_pm25,austin_2014_pm25,austin_2015_pm25,austin_2016_pm25,austin_2017_pm25,austin_2018_pm25,austin_2019_pm25,austin_2020_pm25]
+austin_pm25=pd.concat(frames_austin_pm25,join='outer')
+
+houston_2020_pm25 = clean_city_pm25(houston_pm25_2020)
+houston_2019_pm25 = clean_city_pm25(houston_pm25_2019)
+houston_2018_pm25 = clean_city_pm25(houston_pm25_2018)
+houston_2017_pm25 = clean_city_pm25(houston_pm25_2017)
+houston_2016_pm25 = clean_city_pm25(houston_pm25_2016)
+houston_2015_pm25 = clean_city_pm25(houston_pm25_2015)
+houston_2014_pm25 = clean_city_pm25(houston_pm25_2014)
+houston_2013_pm25 = clean_city_pm25(houston_pm25_2013)
+houston_2012_pm25 = clean_city_pm25(houston_pm25_2012)
+houston_2011_pm25 = clean_city_pm25(houston_pm25_2011)
+houston_2010_pm25 = clean_city_pm25(houston_pm25_2010)
+frames_houston_pm25=[houston_2010_pm25,houston_2011_pm25,houston_2012_pm25,houston_2013_pm25,houston_2014_pm25,houston_2015_pm25,houston_2016_pm25,houston_2017_pm25,houston_2018_pm25,houston_2019_pm25,houston_2020_pm25]
+houston_pm25=pd.concat(frames_houston_pm25,join='outer')
+
+dallas_2020_pm25 = clean_city_pm25(dallas_pm25_2020)
+dallas_2019_pm25 = clean_city_pm25(dallas_pm25_2019)
+dallas_2018_pm25 = clean_city_pm25(dallas_pm25_2018)
+dallas_2017_pm25 = clean_city_pm25(dallas_pm25_2017)
+dallas_2016_pm25 = clean_city_pm25(dallas_pm25_2016)
+dallas_2015_pm25 = clean_city_pm25(dallas_pm25_2015)
+dallas_2014_pm25 = clean_city_pm25(dallas_pm25_2014)
+dallas_2013_pm25 = clean_city_pm25(dallas_pm25_2013)
+dallas_2012_pm25 = clean_city_pm25(dallas_pm25_2012)
+dallas_2011_pm25 = clean_city_pm25(dallas_pm25_2011)
+dallas_2010_pm25 = clean_city_pm25(dallas_pm25_2010)
+frames_dallas_pm25=[dallas_2010_pm25,dallas_2011_pm25,dallas_2012_pm25,dallas_2013_pm25,dallas_2014_pm25,dallas_2015_pm25,dallas_2016_pm25,dallas_2017_pm25,dallas_2018_pm25,dallas_2019_pm25,dallas_2020_pm25]
+dallas_pm25=pd.concat(frames_dallas_pm25,join='outer')
+
+los_angeles_2020pm25 = clean_city_pm25(los_angeles_pm25_2020)
+los_angeles_2019pm25 = clean_city_pm25(los_angeles_pm25_2019)
+los_angeles_2018pm25 = clean_city_pm25(los_angeles_pm25_2018)
+los_angeles_2017pm25 = clean_city_pm25(los_angeles_pm25_2017)
+los_angeles_2016pm25 = clean_city_pm25(los_angeles_pm25_2016)
+los_angeles_2015pm25 = clean_city_pm25(los_angeles_pm25_2015)
+los_angeles_2014pm25 = clean_city_pm25(los_angeles_pm25_2014)
+los_angeles_2013pm25 = clean_city_pm25(los_angeles_pm25_2013)
+los_angeles_2012pm25 = clean_city_pm25(los_angeles_pm25_2012)
+los_angeles_2011pm25 = clean_city_pm25(los_angeles_pm25_2011)
+los_angeles_2010pm25 = clean_city_pm25(los_angeles_pm25_2010)
+frames_los_angeles_pm25=[los_angeles_2010pm25,los_angeles_2011pm25,los_angeles_2012pm25,los_angeles_2013pm25,los_angeles_2014pm25,los_angeles_2015pm25,los_angeles_2016pm25,los_angeles_2017pm25,los_angeles_2018pm25,los_angeles_2019pm25,los_angeles_2020pm25]
+los_angelespm25=pd.concat(frames_los_angeles_pm25,join='outer')
+
+new_york_2020pm25 = clean_city_pm25(new_york_pm25_2020)
+new_york_2019pm25 = clean_city_pm25(new_york_pm25_2019)
+new_york_2018pm25 = clean_city_pm25(new_york_pm25_2018)
+new_york_2017pm25 = clean_city_pm25(new_york_pm25_2017)
+new_york_2016pm25 = clean_city_pm25(new_york_pm25_2016)
+new_york_2015pm25 = clean_city_pm25(new_york_pm25_2015)
+new_york_2014pm25 = clean_city_pm25(new_york_pm25_2014)
+new_york_2013pm25 = clean_city_pm25(new_york_pm25_2013)
+new_york_2012pm25 = clean_city_pm25(new_york_pm25_2012)
+new_york_2011pm25 = clean_city_pm25(new_york_pm25_2011)
+new_york_2010pm25 = clean_city_pm25(new_york_pm25_2010)
+frames_new_york_pm25=[new_york_2010pm25,new_york_2011pm25,new_york_2012pm25,new_york_2013pm25,new_york_2014pm25,new_york_2015pm25,new_york_2016pm25,new_york_2017pm25,new_york_2018pm25,new_york_2019pm25,new_york_2020pm25]
+new_yorkpm25=pd.concat(frames_new_york_pm25,join='outer')
+
+
 # -
 
 
