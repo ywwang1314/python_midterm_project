@@ -44,7 +44,7 @@ The extension of our analysis and our research can be divided into 2 parts.
 
 ## Report on the Data:
 
-We selected 5 areas to collect their daily pollutants and weather, which is Austin, Dallas, Houston, Los Angeles and New York. The re
+We selected 5 areas to collect their daily pollutants and weather, which is Austin, Dallas, Houston, Los Angeles and New York. 
 
 ### Source(s) of datasets:
 
