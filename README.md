@@ -9,11 +9,11 @@ Our goal for this project is to investigate the relationship between the air pol
 
 ### Methodology:
 
-The methodology of our project is to use the OLS regression models between air pollution indicators and weather variable data. Logarithmic transformation is used for variables with large values. And we also add some lags to measure how previous air pollution affects present air pollution. We also drop some dummy variables about extreme weather.
+The methodology of our project is to use the OLS regression models between air pollution indicators and weather variable data. Logarithmic transformation is used for variables with large values. And we also add some lags to measure how previous air pollution affects present air pollution. We also drop some variables which is statistically insignificant, such as dummy variables about extreme weather.
 
 ### Description and Findings:
 
-According to the air pollution data, our group searched and used three indicators including pm2.5, pm10, NO2 from 2010 to 2021. In addition, after comparing the relevance and the integrity of cities’ weather stations, we chose airport weather stations of each city because they contain many specific numbers and values of data including Precipitation(PRCP), Average Wind Speed(AWND), Maximum Temperature(TMAX), Average Temperature(TAVG) and other types. We drop 
+According to the air pollution data, our group searched and used three indicators including pm2.5, pm10, NO2 from 2010 to 2021. In addition, after comparing the relevance and the integrity of cities’ weather stations, we chose airport weather stations of each city because they contain many specific numbers and values of data including Precipitation(PRCP), Average Wind Speed(AWND), Maximum Temperature(TMAX), Average Temperature(TAVG) and other types. Considering some variables have large absolute values which leads to small coefficient. Although the coefficients are statistically significant, we decide to use logarithmic transformation. We drop most dummy variables because special weather is really unusual so that the variables are almost 0.
 
 For the main part, having considered the amount of data of weather types and realistic factors, we chose PRCP, AWND, TMAX, TAVG, and Snow Depth (SNWD) to run the OLS regression with three air pollution indicators. Then we picked up four representative and significant tables of OLS regression from the log table of weather factors from 30 tables. 
 
@@ -28,22 +28,23 @@ For the main part, having considered the amount of data of weather types and rea
 From the result of the four tables, we can get the conclusion that Precipitation, Average Wind Speed might decrease the value of three pollution indicators, and snow depth might cause the increase of pollution indicators. 
 
 ### Limitations:
-*The first limitation is that we regress only some weather variables on air pollution indexes, which means R-square of our OLS regression is not very large. The residual explains most of changes of dependant variables.
-*The second limitation is that there are more to dig out. We should find more relationships between previous and present air pollution indices. 
-*The third limitation is that we just use several continuous variables although we have many 
+*The first limitation is that we regress only some weather variables on air pollution indexes, which means R-square of our OLS regression is not very large. The residual explains most of changes of dependant variables. The solution will be shown in extensions
+*We just use several continuous variables although we have many dummy variables showing special weather like fog. We may use some conditions on regressions instead of just using them as independant variables because many dummy variables 0 most time.
+*When we use logarithmic transformation, we have to drop variables which are 0 before treatment. For example, we have to drop samples with 0 precipitation. So we may lose important information because we only consider days with positive precipitation.
 
 
 
 ### Extensions:
-
-The extension of our analysis and our research can be divided into two parts. 
-*The first is R-squared from OLS regression tables is too small. Maybe we should consider more variables in the weather data. In addition, maybe more social factors like gasoline price can also influence the value of air pollution indicators like PM 2.5. 
-*The next part is we should consider more integral and specific weather data. In this project, we just used the data from the airport station of each city. However, there are more stations in each city, and we should collect more stations’ data which get the comprehensive weather conditions. Several stations’ data can help us analyze the relationship in this process. 
+The extension of our analysis and our research can be divided into 2 parts. 
+*The first part is R-squared from OLS regression tables is too small. Maybe we should consider more variables in the weather data. In addition, maybe more social factors like gasoline price can also influence the value of air pollution indicators like PM 2.5. 
+*The second part is we can avoid using logarithmic transformation. We should try to use the whole dataset.
 *The third part is related to our research, and we can do the time series in the future. Although we did the lag_PM2.5, we could investigate how pm2.5 influences the value of pm2.5 in two days, three days. We wanted to investigate the delayed influence of air pollution indicators. Those are three fields that we can do additional work to the analysis and the research. 
+
+
 
 ## Report on the Data:
 
-We selected 5 areas to collect their daily pollutants and weather, which is Austin, Dallas, Houston, Los Angeles and New York.
+We selected 5 areas to collect their daily pollutants and weather, which is Austin, Dallas, Houston, Los Angeles and New York. The re
 
 ### Source(s) of datasets:
 
@@ -58,7 +59,8 @@ https://www.weather.gov/wrh/Climate?wfo=fwd
 ### Limitations of the data:
 *The second limitation is we just use airport station data of weather variables to cover the whole city, partly because other stastions show few data and we don't have enough time. But we should try to find 
 We choose NO2, pm10 and pm2.5 as daily pollutants, however, there’s still other pollutants that we do not cover, such as CO, SO2, Pb and Ozone.
-
+*meiyouchaoguo100
+The next part is we should consider more integral and specific weather data. In this project, we just used the data from the airport station of each city. However, there are more stations in each city, and we should collect more stations’ data which get the comprehensive weather conditions. Several stations’ data can help us analyze the relationship in this process. 
 ### Extensions:
 
 If further analysis is required, we can add those pollutants in our codes to get more accurate results. 
