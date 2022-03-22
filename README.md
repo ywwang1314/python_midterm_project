@@ -1,5 +1,5 @@
 # python_midterm_project
-Project name: The weather and air pollution index
+Project name: The relationshipt between the weather and air pollution indexes
 
 ## Report on the Analysis
 
